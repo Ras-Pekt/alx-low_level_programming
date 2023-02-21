@@ -21,6 +21,7 @@ int print_last_digit(int n)
 	else
 	{
 		val = val * -1;
+		_putchar('0' + val);
 	}
 	return (val);
 }
