@@ -1,5 +1,5 @@
 #include "main.h"
-#include "_putchar.c"
+
 /**
  * print_triangle - prints a triangle
  * @size: input variable
