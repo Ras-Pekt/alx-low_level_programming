@@ -10,7 +10,7 @@ int main(void)
 {
 	int i, j, k;
 
-	for (i = 1; i <= 100; i++)
+	for (i = 1; i < 100; i++)
 	{
 		j = i % 3;
 		k = i % 5;
@@ -32,6 +32,7 @@ int main(void)
 			printf("%d ", i);
 		}
 	}
+	printf("Buzz");
 	printf("\n");
 	return (0);
 }
