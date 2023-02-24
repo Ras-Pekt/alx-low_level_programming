@@ -24,7 +24,7 @@ int main(void)
 		}
 		if (n == 1)
 		{
-			printf("%lu is the largest prime factor !\n", maxFact);
+			printf("%lu\n", maxFact);
 			break;
 		}
 	}
