@@ -12,8 +12,11 @@ void puts2(char *str)
 
 	while (*(str + sum) != '\0')
 	{
-		_putchar(*(str + sum));
-		sum = sum + 2;
+		if (sum % 2 == 0)
+		{
+			_putchar(*(str + sum));
+		}
+		sum++;
 	}
 	_putchar('\n');
 }
