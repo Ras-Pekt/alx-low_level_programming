@@ -1,5 +1,4 @@
 #include "main.h"
-int _strlen(char *s);
 
 /**
  * print_rev - prints a string in reverse
@@ -9,30 +8,15 @@ int _strlen(char *s);
 
 void print_rev(char *s)
 {
-	int new_sum = _strlen(s);
+	int sum;
 
-	while (new_sum >= 0)
+	for (sum = 0; s[sum] != '\0'; sum++)
 	{
-		_putchar(*(s + new_sum));
-		new_sum--;
+	}
+	for (sum = sum - 1; sum >= 0; sum--)
+	{
+		_putchar(s[sum]);
 	}
 	_putchar('\n');
-}
-
-/**
- * _strlen - calculates length of a string
- * @s: input variable
- * Return: length of string
- */
-
-int _strlen(char *s)
-{
-	int sum = 0;
-
-	while (*(s + sum) != '\0')
-	{
-		sum = sum + 1;
-	}
-	return (sum);
 }
 
