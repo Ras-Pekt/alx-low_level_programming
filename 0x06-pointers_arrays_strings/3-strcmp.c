@@ -13,20 +13,13 @@ int _strcmp(char *s1, char *s2)
 
 	for (s1_counter = 0; s1[s1_counter] != '\0'; s1_counter++)
 	{
-		for (s2_counter = 0; s2[s2_counter] != '\0'; s2_counter++)
-		{
-		}
 	}
-	if (s1_counter < s2_counter)
+	for (s2_counter = 0; s2[s2_counter] != '\0'; s2_counter++)
+	{
+	}
+	if (s1_counter != s2_counter)
 	{
 		return (s1_counter - s2_counter);
 	}
-	else if (s1_counter > s2_counter)
-	{
-		return (s1_counter - s2_counter);
-	}
-	else
-	{
-		return (0);
-	}
+	return (0);
 }
