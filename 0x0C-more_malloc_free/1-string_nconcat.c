@@ -33,14 +33,14 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 		}
 		else
 		{
-			if (j == n)
+			if (j < n && s2[j] != '\0')
 			{
-				ptr[i + 1] = '\0';
-				break;
+				ptr[i] = s2[j];
+				j++;
 			}
-			ptr[i] = s2[j];
-			j++;
+			break;
 		}
 	}
+	ptr[count] = '\0';
 	return (ptr);
 }
