@@ -9,7 +9,23 @@
  */
 int pop_listint(listint_t **head)
 {
+	listint_t *altHead;
 	listint_t *temp;
+	int headData;
+
+	if (head == 0)
+		return (0);
+
+	altHead = *head;
+	
+	headData = altHead->n;
+	temp = altHead->next;
+	free(altHead);
+	*head = temp;
+
+	return (headData);
+	
+	/*listint_t *temp;
 	int headData;
 
 	if (head == NULL)
@@ -18,5 +34,5 @@ int pop_listint(listint_t **head)
 	temp = *head;
 	*head = (*head)->next;
 	free(temp);
-	return (headData);
+	return (headData);*/
 }
