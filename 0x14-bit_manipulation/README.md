@@ -1,5 +1,6 @@
 # 0x14. C - Bit manipulation
 This directory contains functions on bitwise manipulation in C. The functions do the following:
+
 [binary_to_uint](0-binary_to_uint.c) - converts a binary number to an unsigned int
 
 [print_binary](1-print_binary.c) - prints the binary representation of a number
