@@ -10,7 +10,7 @@ int get_bit(unsigned long int n, unsigned int index)
 {
 	int nth_bit;
 
-	if (index > (32)
+	if (index > 32)
 		return (-1);
 	nth_bit = (n >> index) & 1;
 	return (nth_bit);
