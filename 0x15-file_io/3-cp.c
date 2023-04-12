@@ -7,6 +7,20 @@
 #define BUFFER 1024
 
 /**
+ * check_argc - checks argument count
+ * @argc: argument count
+ * Return: void
+ */
+void check_argc(int argc)
+{
+	if (argc != 3)
+	{
+		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
+		exit(97);
+	}
+}
+
+/**
  * safe_close - safely closes file descriptor
  * @fd: file descriptor
  * @b: buffer variable
@@ -32,11 +46,7 @@ int main(int ac, char **av)
 	char *buff;
 	int fd_file_from, fd_file_to, rd, wr;
 
-	if (ac != 3)
-	{
-		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
-		exit(97);
-	}
+	check_argc(ac);
 
 	buff = malloc(sizeof(char) * BUFFER);
 
@@ -50,7 +60,7 @@ int main(int ac, char **av)
 		exit(98);
 	}
 
-	fd_file_to = open(av[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
+	fd_file_to = open(av[2], O_CREAT | O_WRONLY | O_TRUNC, 0664); /* O_WRONLY */
 	wr = write(fd_file_to, buff, rd);
 
 	if (fd_file_to == -1 || wr == -1)
@@ -58,6 +68,13 @@ int main(int ac, char **av)
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", av[2]);
 		free(buff);
 		exit(99);
+	}
+
+	while (rd > 0)
+	{
+		fd_file_to = open(av[2], O_WRONLY | O_APPEND); /* O_WRONLY */
+		rd = read(fd_file_from, buff, BUFFER);
+		wr = write(fd_file_to, buff, rd);
 	}
 
 	safe_close(fd_file_from, buff);
