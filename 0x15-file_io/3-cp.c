@@ -53,6 +53,13 @@ int main(int ac, char **av)
 	fd_file_from = open(av[1], O_RDONLY);
 	rd = read(fd_file_from, buff, BUFFER);
 
+	if (fd_file_from == -1 || rd == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", av[1]);
+		free(buff);
+		exit(98);
+	}
+
 	fd_file_to = open(av[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
 	wr = write(fd_file_to, buff, rd);
 
@@ -67,12 +74,6 @@ int main(int ac, char **av)
 	{
 		fd_file_to = open(av[2], O_WRONLY | O_APPEND);
 		rd = read(fd_file_from, buff, BUFFER);
-		if (fd_file_from == -1 || rd == -1)
-		{
-			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", av[1]);
-			free(buff);
-			exit(98);
-		}
 		wr = write(fd_file_to, buff, rd);
 	}
 
