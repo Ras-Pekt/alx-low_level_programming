@@ -19,7 +19,6 @@ void check_argc(int argc)
 		exit(97);
 	}
 }
-
 /**
  * safe_close - safely closes file descriptor
  * @fd: file descriptor
@@ -48,7 +47,12 @@ int main(int ac, char **av)
 
 	check_argc(ac);
 
-	buff = malloc(sizeof(char) * BUFFER);
+	if ((buff = malloc(sizeof(char) * BUFFER)) == NULL)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", av[2]);
+		free(buff);
+		exit(99);
+	}
 
 	fd_file_from = open(av[1], O_RDONLY);
 	rd = read(fd_file_from, buff, BUFFER);
