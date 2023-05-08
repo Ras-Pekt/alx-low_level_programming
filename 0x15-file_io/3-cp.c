@@ -65,21 +65,15 @@ int main(int ac, char **av)
 
 	check_argc(ac);
 	buff = createBuffer(av[2]);
-
 	fd_file_from = open(av[1], O_RDONLY);
 	rd = read(fd_file_from, buff, BUFFER);
 	fd_file_to = open(av[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
 
 	while (rd > 0)
 	{
-		if (fd_file_from == -1 || rd == -1)
-		{
-			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", av[1]);
-			free(buff);
-			exit(98);
-		}
+		fd_file_to = open(av[2], O_WRONLY | O_APPEND);
+		rd = read(fd_file_from, buff, BUFFER);
 
-		wr = write(fd_file_to, buff, rd);
 		if (fd_file_to == -1 || wr == -1)
 		{
 			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", av[2]);
@@ -87,8 +81,14 @@ int main(int ac, char **av)
 			exit(99);
 		}
 
-		fd_file_to = open(av[2], O_WRONLY | O_APPEND);
-		rd = read(fd_file_from, buff, BUFFER);
+		wr = write(fd_file_to, buff, rd);
+
+		if (fd_file_from == -1 || rd == -1)
+		{
+			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", av[1]);
+			free(buff);
+			exit(98);
+		}
 	}
 
 	safe_close(fd_file_from, buff);
