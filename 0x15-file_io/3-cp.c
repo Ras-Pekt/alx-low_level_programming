@@ -87,8 +87,8 @@ int main(int ac, char **av)
 			exit(99);
 		}
 
-		rd = read(fd_file_from, buff, BUFFER);
 		fd_file_to = open(av[2], O_WRONLY | O_APPEND);
+		rd = read(fd_file_from, buff, BUFFER);
 	}
 
 	safe_close(fd_file_from, buff);
