@@ -4,8 +4,8 @@
 #include "lists.h"
 /**
  * delete_dnodeint_at_index - delete a node at a given position
- * @h: double pointer to head node
- * @idx: index to delete node
+ * @head: double pointer to head node
+ * @index: index to delete node
  * Return: 1 on success. -1 otherwise
  */
 int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
