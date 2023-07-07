@@ -6,4 +6,4 @@ This directory contains exercises on creating and using hash tables in C. They i
 - [3-hash_table_set.c](3-hash_table_set.c) - adds an element to the hash table
 - [4-hash_table_get.c](4-hash_table_get.c) - retrieves a value associated with a key
 - [5-hash_table_print.c](5-hash_table_print.c) - prints a hash table
-- 
+- [6-hash_table_delete.c](6-hash_table_delete.c) - deletes a hash table
