@@ -8,5 +8,7 @@
 int main(void)
 {
 	print_school();
+	/* printf("\n"); */
 	return (EXIT_SUCCESS);
 }
+/* School */
