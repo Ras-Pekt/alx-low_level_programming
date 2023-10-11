@@ -61,7 +61,6 @@ int exponential_search(int *array, size_t size, int value)
 		printf("Value checked array[%ld] = [%d]\n", i, array[i]);
 		i *= 2;
 	}
-
 	left = i / 2;
 	right = (i < size) ? i : size - 1;
 
